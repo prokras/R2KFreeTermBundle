@@ -1,2 +1,5 @@
 services:
-    
+    r2k.twig_extension:
+        class: R2K\FreeTermBundle\Twig\FunctionsExtensions
+        tags:
+            - { name: twig.extension }

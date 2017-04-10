@@ -1,3 +1,4 @@
 /Resources/credentials/*
 /Resources/credentials
 !/Resourcess/credentials/.gitkeep
+/Resources/config/config.yml
