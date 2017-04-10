@@ -1,5 +1,9 @@
 services:
     r2k.twig_extension:
         class: R2K\FreeTermBundle\Twig\FunctionsExtensions
+        arguments:
+            - "%google_api_cred%"
+            - "%google_calendar_id%"
+            - "%google_app_name%"
         tags:
             - { name: twig.extension }

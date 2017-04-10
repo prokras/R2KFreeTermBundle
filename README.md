@@ -1,35 +1,55 @@
-1. Download ```
-to src\R2K\FreeTermBundle
+Bundles connects with google calendar api and displays dates without event for period
+four weeks from current date, weekends excluded
 
-```
-2. install google api client
+Installation
+============
+1. Download or pull code to namespace R2K\FreeTermBundle
+2. Install google api client https://github.com/google/google-api-php-client
     composer require google/apiclient:^2.0
-    https://github.com/google/google-api-php-client
-2. Register bundle in AppKernel
-3. Rename config.yml.dis to config.yml in R2K\FreeTermBundle\Resources\config
-4. Set parameters in config.yml:
-    google_api_cred and google_calendar_id according to your specification
+3. Register bundle in AppKernel
+        ```php
+        <?php
+        // app/AppKernel.php
 
-5. Copy your google account key to Resource/credentials
-6. Optional asset:install
-8. Place {{ render_terms(terms) }} in your template to render terms
-7. Example:
+        // ...
+        class AppKernel extends Kernel
+        {
+            public function registerBundles()
+            {
+                $bundles = array(
+                    // ...
 
-/**
- * @Route("/test", name="test")
- */
-public function testAction()
-{
-    $credentials = $this->getParameter('google_api_cred');
-    $calendarId = $this->getParameter('google_calendar_id');
-    $calendar = new GoogleCalendarApi($credentials, $calendarId, 'Google Calendar Terms');
+                    new R2K\FreeTermBundle\R2KFreeTermBundle(),
+                );
 
-    $builder = new TermBuilder($calendar);
+                // ...
+            }
 
+            // ...
+        }
+        ```
+4. In R2K\FreeTermBundle\Resources\config
+    a) Rename config.yml.dis to config.yml
+    b) Set parameters in config.yml:
+        - google_api_cred: path to your api json key
+        - google_calendar_id: your google calendar id
+        - google_app_name: application name, name it whatever you want
+5. Copy your google account key file to Resource/credentials
+6. (Optional) asset:install
+8. Place {{ render_terms() }} in your template to render terms
+7. Controller example, test usage:
+        ```
+        /**
+         * @Route("/test", name="test")
+         */
+        public function testAction()
+        {
+            return $this->render('R2KFreeTermBundle:term:index.html.twig');
+        }
+        ```
 
-    return $this->render('R2KFreeTermBundle:term:index.html.twig', [
-        'terms' => $builder->getFree(),
-
-    ]);
-
-}
+Google Calendar Setup
+=====================
+1. Go to google api console https://console.developers.google.com
+2. Create credential service account key, download json file
+4. In google calendar share setting add user, use service account ID

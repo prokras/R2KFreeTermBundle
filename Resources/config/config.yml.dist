@@ -1,4 +1,5 @@
 parameters:
     google_api_cred: "%kernel.root_dir%/../src/R2K/FreeTermBundle/Resources/credentials/calendar-api.json"
     google_calendar_id: "your_google_id@group.calendar.google.com"
+    google_app_name: "Google Calendar Free Terms"
     
