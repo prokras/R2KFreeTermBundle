@@ -1,0 +1,3 @@
+/Resources/credentials/*
+/Resources/credentials
+!/Resourcess/credentials/.gitkeep
