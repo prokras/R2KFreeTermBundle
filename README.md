@@ -7,7 +7,7 @@ Installation
 2. Install google api client https://github.com/google/google-api-php-client
     composer require google/apiclient:^2.0
 3. Register bundle in AppKernel
-        ```php
+        ```
         <?php
         // app/AppKernel.php
 
