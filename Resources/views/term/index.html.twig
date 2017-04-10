@@ -1,8 +1,13 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/r2kfreeterm/css/free_terms.css')}}">
+{% endblock %}
+
 {% block body %}
     <h1>R2FreeTermBundle --</h1>
-    
+
     {{ render_terms(terms) }}
 
 {% endblock %}
