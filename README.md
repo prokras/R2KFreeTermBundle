@@ -1,4 +1,4 @@
-Bundles connects with google calendar api and displays dates without event for period
+Bundle connects with google calendar api and displays dates without event for period
 four weeks from current date, weekends excluded
 
 Installation
